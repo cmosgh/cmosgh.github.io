@@ -28,6 +28,9 @@ spec:
       - name: {{ template "worker-fullname" . }}
         image: "{{ .Values.Worker.Image }}:{{ .Values.Worker.ImageTag }}"
         imagePullPolicy: {{ .Values.Worker.ImagePullPolicy }}
+        ports:
+          - containerPort: {{ .Values.Server.Service.internalPort }}
+            hostPort: {{ .Values.Server.Service.internalPort }}
         env:
         - name: NODE_ENV
           value: "production"
