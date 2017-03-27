@@ -1,0 +1,43 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ template "worker-fullname" . }}
+  labels:
+    app: {{ template "fullname" . }}
+    heritage: {{.Release.Service | quote }}
+    release: {{.Release.Name | quote }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    component: {{ template "worker-fullname" . }}
+    id: {{ .Values.Id }}
+    branch: {{ .Values.Branch }}
+spec:
+  replicas: {{default 1 .Values.Worker.Replicas}}
+  selector:
+    matchLabels:
+      app: {{ template "fullname" . }}
+      component:  {{ template "worker-fullname" . }}
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: {{ template "fullname" . }}
+        component:  {{ template "worker-fullname" . }}
+    spec:
+      containers:
+      - name: {{ template "worker-fullname" . }}
+        image: "{{ .Values.Worker.Image }}:{{ .Values.Worker.ImageTag }}"
+        imagePullPolicy: {{ .Values.Worker.ImagePullPolicy }}
+        env:
+        - name: NODE_ENV
+          value: "production"
+        - name: SUBDOMAIN
+          value: "kf-{{ .Values.Id}}"
+        - name: MONGO_URI
+          value: {{ template "mongo-uri" . }}
+        - name: REDIS_PORT
+          value: "6379"
+        - name: REDIS_IP
+          value: "redis-service"
+        resources:
+{{ toYaml .Values.Worker.Resources | indent 12 }}

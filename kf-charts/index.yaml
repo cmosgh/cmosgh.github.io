@@ -1,0 +1,15 @@
+apiVersion: v1
+entries:
+  kfinstance:
+  - apiVersion: v1
+    created: 2017-03-27T11:51:57.403728838+03:00
+    description: Helm chart for deploying a KF instance
+    digest: cc0e5156918be287797dad987936a1dd1f1e4615d1d858698b0098874618317c
+    keywords:
+    - knowledgeflow
+    - instance
+    name: kfinstance
+    urls:
+    - https://cmosgh.github.io/kf-charts/kfinstance-0.1.0.tgz
+    version: 0.1.0
+generated: 2017-03-27T11:51:57.401787666+03:00

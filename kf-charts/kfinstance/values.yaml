@@ -1,0 +1,63 @@
+# Default values for kfinstance.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+replicaCount: 1
+name: kf
+
+# Default suffix from branch
+Branch: dev
+Id: 12charid9012
+
+# Server image details
+Server:
+  Name: kfs
+  Image: cmos/kfs
+  ImageTag: latest
+  Component: server
+  Replicas: 2
+  ImagePullPolicy: Always
+  Resources:
+    limits:
+        cpu: 150m
+        memory: 256Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+  Service:
+    externalPort: 3000
+    internalPort: 3000
+    portType: NodePort #can be NodePort, ExternalName, LoadBalancer, ClusterIP
+
+# Worker
+Worker:
+  Name: kfw
+  Image: cmos/kfw
+  ImageTag: latest
+  Component: worker
+  Replicas: 2
+  resources:
+    limits:
+      cpu: 100m
+      memory: 256Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+# Dedicated mongo instance
+Mongo:
+  Name: kfmongo
+  Image: mongo
+  resources:
+    limits:
+      cpu: 100m
+      memory: 512Mi
+    requests:
+      cpu: 100m
+      memory: 256Mi
+  Volumes:
+    Capacity: 2Gi
+    HostPath: "/mnt/data/default/mongodb"
+  ServiceName: kfm
+  ServicePort: 27017
+
+
