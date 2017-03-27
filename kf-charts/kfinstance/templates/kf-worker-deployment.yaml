@@ -41,3 +41,9 @@ spec:
           value: "redis-service"
         resources:
 {{ toYaml .Values.Worker.Resources | indent 12 }}
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: {{ .Values.Server.Service.internalPort }}
+          initialDelaySeconds: 15
+          periodSeconds: 3
