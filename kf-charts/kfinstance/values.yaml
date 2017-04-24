@@ -46,7 +46,7 @@ Worker:
 # Dedicated mongo instance
 Mongo:
   Name: kfmongo
-  Image: mongo
+  Image: mongo:latest
   resources:
     limits:
       cpu: 100m
@@ -56,7 +56,7 @@ Mongo:
       memory: 256Mi
   Volumes:
     Capacity: 2Gi
-    HostPath: "/mnt/data/default/mongodb"
+    HostPath: "/mnt/data/instances/mongodb"
   ServiceName: kfm
   ServicePort: 27017
 

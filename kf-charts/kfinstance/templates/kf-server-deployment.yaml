@@ -12,6 +12,7 @@ metadata:
     branch: {{ .Values.Branch }}
 spec:
   replicas: {{default 1 .Values.Server.Replicas}}
+  revisionHistoryLimit: 2
   selector:
     matchLabels:
       app: {{ template "fullname" . }}
@@ -61,8 +62,8 @@ spec:
           httpGet:
             path: /healthz
             port: {{ .Values.Server.Service.internalPort }}
-          initialDelaySeconds: 30
-          periodSeconds: 3
+          initialDelaySeconds: 50
+          periodSeconds: 5
 
 ---
 apiVersion: v1

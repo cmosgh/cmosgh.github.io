@@ -12,6 +12,7 @@ metadata:
     branch: {{ .Values.Branch }}
 spec:
   replicas: {{default 1 .Values.Worker.Replicas}}
+  revisionHistoryLimit: 2
   selector:
     matchLabels:
       app: {{ template "fullname" . }}
