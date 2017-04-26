@@ -42,6 +42,16 @@ spec:
           value: "6379"
         - name: REDIS_IP
           value: "redis-service"
+        - name: PASSWORD_MIN_AMOUNT_CHARS
+          value: "8"
+        - name: PASSWORD_MIN_AMOUNT_LETTERS
+          value: "1"
+        - name: PASSWORD_MIN_AMOUNT_NUMBERS
+          value: "1"
+        - name: DEFAULT_OWNER_GROUP
+          value: "OWNER"
+        - name: DEFAULT_USER_GROUP
+          value: "USER"
         resources:
 {{ toYaml .Values.Worker.Resources | indent 12 }}
         livenessProbe:

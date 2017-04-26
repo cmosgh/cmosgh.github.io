@@ -44,6 +44,18 @@ spec:
           value: "redis-service"
         - name: SECRET
           value: {{ randAlphaNum 28 | b64enc | quote }}
+        - name: PASSWORD_MIN_AMOUNT_CHARS
+          value: "8"
+        - name: PASSWORD_MIN_AMOUNT_LETTERS
+          value: "1"
+        - name: PASSWORD_MIN_AMOUNT_NUMBERS
+          value: "1"
+        - name: DEFAULT_OWNER_GROUP
+          value: "OWNER"
+        - name: DEFAULT_USER_GROUP
+          value: "USER"
+        - name: LANGUAGES
+          value: "nl,en"
         - name: ACCOUNT_OWNER_EMAIL
         {{ if .Values.AccountOwnerEmail }}
           value: {{ .Values.AccountOwnerEmail }}
