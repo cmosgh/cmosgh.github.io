@@ -2,7 +2,18 @@ apiVersion: v1
 entries:
   kfinstance:
   - apiVersion: v1
-    created: 2017-03-27T15:23:40.496262652+03:00
+    created: 2017-04-26T16:33:07.606152681+03:00
+    description: Helm chart for deploying a KF instance
+    digest: b88da9882258de9e9af5e3a0dac6e0b572281f7df8955886aa140ab0f561827c
+    keywords:
+    - knowledgeflow
+    - instance
+    name: kfinstance
+    urls:
+    - kfinstance-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v1
+    created: 2017-04-26T16:33:07.603632487+03:00
     description: Helm chart for deploying a KF instance
     digest: 32e432f049531f0fa5a18893cefbc7888c82b55e90542f6539cf78f4d3125a4b
     keywords:
@@ -10,10 +21,10 @@ entries:
     - instance
     name: kfinstance
     urls:
-    - https://cmosgh.github.io/kf-charts/kfinstance-0.1.2.tgz
+    - kfinstance-0.1.2.tgz
     version: 0.1.2
   - apiVersion: v1
-    created: 2017-03-27T15:23:40.495805303+03:00
+    created: 2017-04-26T16:33:07.603063535+03:00
     description: Helm chart for deploying a KF instance
     digest: c39e37c0d4c0885b8ca29c5e91af48d7d60eaeecf108d77a9fc3886860cda3d3
     keywords:
@@ -21,10 +32,10 @@ entries:
     - instance
     name: kfinstance
     urls:
-    - https://cmosgh.github.io/kf-charts/kfinstance-0.1.1.tgz
+    - kfinstance-0.1.1.tgz
     version: 0.1.1
   - apiVersion: v1
-    created: 2017-03-27T15:23:40.495275856+03:00
+    created: 2017-04-26T16:33:07.601041699+03:00
     description: Helm chart for deploying a KF instance
     digest: cc0e5156918be287797dad987936a1dd1f1e4615d1d858698b0098874618317c
     keywords:
@@ -32,6 +43,6 @@ entries:
     - instance
     name: kfinstance
     urls:
-    - https://cmosgh.github.io/kf-charts/kfinstance-0.1.0.tgz
+    - kfinstance-0.1.0.tgz
     version: 0.1.0
-generated: 2017-03-27T15:23:40.490238409+03:00
+generated: 2017-04-26T16:33:07.589194726+03:00
