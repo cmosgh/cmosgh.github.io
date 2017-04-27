@@ -82,6 +82,7 @@ spec:
         volumeMounts:
         - name: mongo-persistent-storage
           mountPath: /data/db
+        resources:
 {{ toYaml .Values.Mongo.Resources | indent 12 }}
       volumes:
         - name: mongo-persistent-storage

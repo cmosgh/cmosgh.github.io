@@ -35,7 +35,7 @@ Worker:
   ImageTag: latest
   Component: worker
   Replicas: 2
-  resources:
+  Resources:
     limits:
       cpu: 100m
       memory: 256Mi
@@ -50,7 +50,7 @@ Mongo:
   Resources:
     limits:
       cpu: 100m
-      memory: 512Mi
+      memory: 256Mi
     requests:
       cpu: 100m
       memory: 256Mi
