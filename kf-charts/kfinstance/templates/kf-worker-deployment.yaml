@@ -60,6 +60,18 @@ spec:
           value: "OWNER"
         - name: DEFAULT_USER_GROUP
           value: "USER"
+        - name: ACCOUNT_OWNER_EMAIL
+        {{ if .Values.AccountOwnerEmail }}
+          value: {{ .Values.AccountOwnerEmail }}
+        {{ else }}
+          value: "admin-{{ .Values.Id }}@knowledgeflow.io"
+        {{ end }}
+        - name: ACCOUNT_OWNER_PASSWORD
+        {{ if .Values.AccountOwnerPassword }}
+          value: {{ .Values.AccountOwnerPassword }}
+        {{ else }}
+          value: {{ randAlphaNum 10 | b64enc | quote }}
+        {{ end }}
         resources:
 {{ toYaml .Values.Worker.Resources | indent 12 }}
         livenessProbe:
