@@ -35,7 +35,11 @@ spec:
         - name: NODE_ENV
           value: "production"
         - name: SUBDOMAIN
+        {{- if .Values.SUBDOMAIN}}
+          value: {{ .Values.SUBDOMAIN}}
+        {{- else}}
           value: "kf-{{ .Values.Id}}"
+        {{- end}}
         - name: MONGO_URI
           value: {{ template "mongo-uri" . }}
         - name: REDIS_PORT
