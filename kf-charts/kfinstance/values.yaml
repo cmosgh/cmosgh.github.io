@@ -47,7 +47,7 @@ Worker:
 Mongo:
   Name: kfmongo
   Image: mongo:latest
-  resources:
+  Resources:
     limits:
       cpu: 100m
       memory: 512Mi
