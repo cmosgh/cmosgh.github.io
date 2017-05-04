@@ -21,8 +21,8 @@ spec:
     type: RollingUpdate
     rollingUpdate:
       maxSurge: 2
-      maxUnavailable: 0
-  minReadySeconds: 10
+      maxUnavailable: 1
+  minReadySeconds: 30
   template:
     metadata:
       labels:
@@ -78,5 +78,11 @@ spec:
           httpGet:
             path: /healthz
             port: {{ .Values.Server.Service.internalPort }}
-          initialDelaySeconds: 30
+          initialDelaySeconds: 15
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: {{ .Values.Server.Service.internalPort }}
+          initialDelaySeconds: 5
           periodSeconds: 5
