@@ -60,6 +60,12 @@ spec:
           value: "OWNER"
         - name: DEFAULT_USER_GROUP
           value: "USER"
+        - name: LANGUAGES
+        {{ if .Values.Languages }}
+          value: {{ .Values.Languages }}
+        {{ else }}
+          value: "en,nl,ro"
+        {{ end }}
         - name: ACCOUNT_OWNER_EMAIL
         {{ if .Values.AccountOwnerEmail }}
           value: {{ .Values.AccountOwnerEmail }}
