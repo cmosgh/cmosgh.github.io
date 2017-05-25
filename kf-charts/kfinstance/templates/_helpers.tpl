@@ -45,4 +45,6 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 {{- printf "%s/%s-%s" .Values.Mongo.Volumes.HostPath .Chart.Name .Values.Id | trimSuffix "-" -}}
 {{- end -}}
 
-
+{{- define "host-fullname" -}}
+{{- printf "%s.knowledgeflow.io" .Values.Branch -}}
+{{- end -}}
