@@ -116,3 +116,27 @@ spec:
   type: {{.Values.Server.Service.portType}}
   selector:
     component: {{ template "server-fullname" . }}
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+ name: {{ template "server-fullname" . }}
+ labels:
+   app: {{ template "fullname" . }}
+   heritage: {{.Release.Service | quote }}
+   release: {{.Release.Name | quote }}
+   chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+   component: {{ template "server-fullname" . }}
+spec:
+ rules:
+   {{ if .Values.Host }}
+   - host: {{.Values.Host}}
+   {{ else }}
+   - host: {{ template "host-fullname" . }}
+   {{ end }}
+     http:
+       paths:
+         - path: /
+           backend:
+             serviceName: {{ template "server-fullname" . }}
+             servicePort: {{.Values.Server.Service.internalPort}}
