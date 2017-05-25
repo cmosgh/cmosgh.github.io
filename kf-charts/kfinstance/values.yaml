@@ -14,14 +14,14 @@ Server:
   Image: cmos/kfs
   ImageTag: latest
   Component: server
-  Replicas: 2
+  Replicas: 3
   ImagePullPolicy: Always
   Resources:
     limits:
-        cpu: 150m
+        cpu: 200m
         memory: 256Mi
     requests:
-      cpu: 100m
+      cpu: 200m
       memory: 128Mi
   Service:
     externalPort: 3000
