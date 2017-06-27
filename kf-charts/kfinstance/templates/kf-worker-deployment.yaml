@@ -60,6 +60,8 @@ spec:
           value: "OWNER"
         - name: DEFAULT_USER_GROUP
           value: "USER"
+        - name: LANGUAGE_FIELDNAME
+          value: "language"
         - name: LANGUAGES
         {{ if .Values.Languages }}
           value: {{ .Values.Languages }}
