@@ -14,7 +14,7 @@ Server:
   Image: cmos/kfs
   ImageTag: latest
   Component: server
-  Replicas: 3
+  Replicas: 2
   ImagePullPolicy: Always
   Resources:
     limits:

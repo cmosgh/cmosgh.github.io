@@ -20,7 +20,7 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: 1
+      maxSurge: {{default 1 .Values.Server.Replicas}}
       maxUnavailable: 0
   minReadySeconds: 30
   template:
