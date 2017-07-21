@@ -44,7 +44,7 @@ spec:
         {{- else}}
           value: "kf-{{ .Values.Id}}"
         {{- end}}
-         - name: DEBUG
+        - name: DEBUG
         {{- if .Values.DEBUG}}
           value: {{ .Values.DEBUG}}
         {{- else}}
