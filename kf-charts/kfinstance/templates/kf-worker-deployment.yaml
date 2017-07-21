@@ -21,7 +21,7 @@ spec:
     type: RollingUpdate
     rollingUpdate:
       maxSurge: {{default 1 .Values.Worker.Replicas}}
-      maxUnavailable: 0
+      maxUnavailable: 1
   minReadySeconds: 30
   template:
     metadata:
@@ -43,6 +43,12 @@ spec:
           value: {{ .Values.SUBDOMAIN}}
         {{- else}}
           value: "kf-{{ .Values.Id}}"
+        {{- end}}
+         - name: DEBUG
+        {{- if .Values.DEBUG}}
+          value: {{ .Values.DEBUG}}
+        {{- else}}
+          value: "none"
         {{- end}}
         - name: MONGO_URI
           value: {{ template "mongo-uri" . }}
