@@ -90,12 +90,12 @@ spec:
         {{ end }}
         resources:
 {{ toYaml .Values.Server.Resources | indent 12 }}
-        #livenessProbe:
-#          httpGet:
-#            path: /healthz
-#            port: {{ .Values.Server.Service.internalPort }}
-#          initialDelaySeconds: 120
-#          periodSeconds: 11
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: {{ .Values.Server.Service.internalPort }}
+          initialDelaySeconds: 120
+          periodSeconds: 11
         readinessProbe:
           httpGet:
             path: /healthz
