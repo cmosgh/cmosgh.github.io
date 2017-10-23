@@ -35,6 +35,7 @@ Worker:
   ImageTag: latest
   Component: worker
   Replicas: 2
+  ImagePullPolicy: Always
   Resources:
     limits:
       cpu: 200m
