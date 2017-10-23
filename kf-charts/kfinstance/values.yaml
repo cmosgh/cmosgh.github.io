@@ -26,7 +26,7 @@ Server:
   Service:
     externalPort: 3000
     internalPort: 3000
-    portType: NodePort #can be NodePort, ExternalName, LoadBalancer, ClusterIP
+    portType: ClusterIP #can be NodePort, ExternalName, LoadBalancer, ClusterIP
 
 # Worker
 Worker:
