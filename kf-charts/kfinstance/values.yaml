@@ -62,3 +62,15 @@ Mongo:
   ServicePort: 27017
 
 
+# dedicated ES sync instance with Monstache
+Monstache:
+  Name: kfmonstache
+  Image: cmos/monstache
+  Resources:
+    limits:
+      cpu: 100m
+      memory: 100Mi
+    requests:
+      cpu: 100m
+      memory: 100Mi
+
