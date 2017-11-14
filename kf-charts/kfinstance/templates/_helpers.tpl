@@ -25,6 +25,11 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 {{- printf "%s-%s-%s" .Values.Mongo.Name .Release.Name .Values.Id | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
+{{- define "mongo-replica-set" -}}
+{{- printf "%s-%s-%s-replSet" .Values.Mongo.Name .Values.Branch .Values.Id | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
+
+
 {{- define "mongo-controller-port" -}}
 {{- printf "%s%s" "mcp" .Values.Id -}}
 {{- end -}}
@@ -41,10 +46,22 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 {{- printf "%s/%s-%s" .Values.Mongo.Volumes.HostPath .Chart.Name .Values.Id | trimSuffix "-" -}}
 {{- end -}}
 
+{{- define "mongo-db" -}}
+{{- printf "kf_%s" .Values.Id | trimSuffix "-" -}}
+{{- end -}}
+
 {{- define "mongo-nfspath" -}}
 {{- printf "%s/%s-%s" .Values.Mongo.Volumes.HostPath .Chart.Name .Values.Id | trimSuffix "-" -}}
 {{- end -}}
 
 {{- define "host-fullname" -}}
 {{- printf "%s.knowledgeflow.io" .Values.Branch -}}
+{{- end -}}
+
+{{- define "monstache-fullname" -}}
+{{- printf "%s-%s-monstache" .Values.Branch .Values.Id -}}
+{{- end -}}
+
+{{- define "monstache-config" -}}
+{{- printf "%s-%s-monstache-config" .Values.Branch .Values.Id | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
