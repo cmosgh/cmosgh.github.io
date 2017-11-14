@@ -72,10 +72,17 @@ spec:
         app: {{ template "fullname" . }}
         component: {{template "mongo-fullname" . }}
         name: {{ template "mongo-controller-port" .}}
+        replSet: {{ template "mongo-replica-set" . }}
     spec:
       containers:
       - image: "{{ .Values.Mongo.Image }}"
         name: {{ template "mongo-fullname" . }}
+        command:
+          - mongod
+          - "--replSet"
+          - {{ template "mongo-replica-set" . }}
+          - "--smallfiles"
+          - "--noprealloc"
         ports:
         - name:  {{ template "mongo-controller-port" .}}
           containerPort: {{ .Values.Mongo.ServicePort }}
@@ -84,6 +91,11 @@ spec:
           mountPath: /data/db
         resources:
 {{ toYaml .Values.Mongo.Resources | indent 12 }}
+      - name: mongo-sidecar
+        image: cvallance/mongo-k8s-sidecar
+        env:
+          - name: MONGO_SIDECAR_POD_LABELS
+            value: name={{ template "mongo-controller-port" . }} replsSet={{ template "mongo-replica-set" . }}
       volumes:
         - name: mongo-persistent-storage
           persistentVolumeClaim:
