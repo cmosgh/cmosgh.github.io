@@ -1,0 +1,112 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "monstache-config" . }}
+data:
+  config.toml: |
+    gzip = true
+    stats = true
+    index-stats = true
+    mongo-url = "mongodb://{{ template "mongo-controller-port" . }}"
+    {{- if .Values.Monstache.mongoPemFile }}
+    mongo-pem-file = {{ .Values.Monstache.mongoPemFile }}
+    {{- end}}
+    {{- if .Values.Monstache.mongoValidatePemFile }}
+    mongo-validate-pem-file = {{default false .Values.Monstache.mongoValidatePemFile }}
+    {{- end}}
+    elasticsearch-urls = ["http://127.0.0.1:9200"]
+    {{- if .Values.Monstache.esUser}}
+    elasticsearch-user = {{ .Values.Monstache.esUser | quote }}
+    {{- end}}
+    {{- if .Values.Monstache.esPassword | quote }}
+    elasticsearch-password = {{ .Values.Monstache.esPassword }}
+    {{- end}}
+    elasticsearch-max-conns = {{default 5 .Values.Monstache.esMaxConns}}
+    {{- if .Values.Monstache.esPemFile}}
+    elasticsearch-pem-file = {{ .Values.Monstache.esPemFile}}
+    {{- end}}
+    {{- if .Values.Monstache.esValidatePemFile}}
+    elastic-validate-pem-file = {{ .Values.Monstache.esValidatePemFile}}
+    {{- end}}
+    dropped-collections = true
+    dropped-databases = true
+    replay = false
+    resume = true
+    resume-write-unsafe = false
+    {{- if .Values.Monstache.resumeName}}
+    resume-name = {{ .Values.Monstache.resumeName }}
+    {{- end}}
+    namespace-regex= "^(([A-Za-z0-9])+\\.(view\\-)+([A-Za-z\\-])+)"
+    namespace-exclude-regex = {{default "" .Values.Monstache.namespaceExcludeRegex | quote}}
+    gtm-channel-size = {{default 10 .Values.Monstache.gtmChannelSize}}
+    {{- if .Values.Monstache.indexFiles}}
+    index-files ={{default true .Values.Monstache.indexFiles }}
+    {{- end}}
+    {{- if .Values.Monstache.fileHighlighting}}
+    file-highlighting = {{default true .Values.Monstache.fileHighlighting}}
+    {{- end}}
+    {{- if .Values.Monstache.fileNamespaces}}
+    file-namespaces = {{ .Values.Monstache.fileNamespaces}}
+    {{- end}}
+    verbose = {{default true .Values.Monstache.verbose}}
+    {{- if .Values.Monstache.clusterName}}
+    cluster-name = {{ .Values.Monstache.clusterName}}
+    {{- end }}
+    direct-read-namespaces = ["{{ template "mongo-db" . }}.view-questions","{{ template "mongo-db" . }}.view-cloudinary-image"]
+    exit-after-direct-reads = false
+
+    [[mapping]]
+    namespace = "{{ template "mongo-db" . }}.view-questions"
+    index = "{{ template "mongo-db" . }}"
+    type = "view-questions"
+
+    [[mapping]]
+    namespace = "{{ template "mongo-db" . }}.view-cloudinary-image"
+    index = "{{ template "mongo-db" . }}"
+    type = "view-cloudinary-image"
+
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ template "monstache-fullname" . }}
+  labels:
+    app: {{ template "fullname" . }}
+    heritage: {{.Release.Service | quote }}
+    release: {{.Release.Name | quote }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    component: {{ template "monstache-fullname" . }}
+    id: {{ .Values.Id }}
+    branch: {{ .Values.Branch }}
+    name: {{ template "monstache-fullname" . }}
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: {{ template "fullname" . }}
+      component: {{ template "monstache-fullname" . }}
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: {{ template "fullname" . }}
+        component: {{ template "monstache-fullname" . }}
+        name: {{ template "monstache-fullname" . }}
+    spec:
+      containers:
+      - image: "{{ .Values.Monstache.Image }}"
+        imagePullPolicy: Always
+        name: {{ template "monstache-fullname" . }}
+        command:
+          - "/monstache"
+          - "-f"
+          - "/config/config.toml"
+        volumeMounts:
+          - name: monstache-config
+            mountPath: /config
+      volumes:
+        - name: monstache-config
+          configMap:
+            name: {{ template "monstache-config" . }}
