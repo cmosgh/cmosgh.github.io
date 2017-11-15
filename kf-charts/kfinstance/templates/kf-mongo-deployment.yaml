@@ -95,7 +95,7 @@ spec:
         image: cvallance/mongo-k8s-sidecar
         env:
           - name: MONGO_SIDECAR_POD_LABELS
-            value: name={{ template "mongo-controller-port" . }} replsSet={{ template "mongo-replica-set" . }}
+            value: replSet={{ template "mongo-replica-set" . }}
       volumes:
         - name: mongo-persistent-storage
           persistentVolumeClaim:
