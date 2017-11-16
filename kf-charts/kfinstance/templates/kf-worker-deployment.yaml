@@ -38,6 +38,12 @@ spec:
         env:
         - name: NODE_ENV
           value: "production"
+        - name: ES_URI
+          value: "elasticsearch:9200"
+        - name: ES_VERSION
+          value: "5.6"
+        - name: MONGO_DB
+          value: {{ template "mongo-db" . }}
         - name: SUBDOMAIN
         {{- if .Values.SUBDOMAIN}}
           value: {{ .Values.SUBDOMAIN}}
