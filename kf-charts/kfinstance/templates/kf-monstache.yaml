@@ -7,14 +7,14 @@ data:
     gzip = true
     stats = true
     index-stats = true
-    mongo-url = "mongodb://{{ template "mongo-controller-port" . }}"
+    mongo-url = "mongodb://{{ template "mongo-service" . }}:27017"
     {{- if .Values.Monstache.mongoPemFile }}
     mongo-pem-file = {{ .Values.Monstache.mongoPemFile }}
     {{- end}}
     {{- if .Values.Monstache.mongoValidatePemFile }}
     mongo-validate-pem-file = {{default false .Values.Monstache.mongoValidatePemFile }}
     {{- end}}
-    elasticsearch-urls = ["http://127.0.0.1:9200"]
+    elasticsearch-urls = ["http://elasticsearch:9200"]
     {{- if .Values.Monstache.esUser}}
     elasticsearch-user = {{ .Values.Monstache.esUser | quote }}
     {{- end}}
@@ -36,8 +36,8 @@ data:
     {{- if .Values.Monstache.resumeName}}
     resume-name = {{ .Values.Monstache.resumeName }}
     {{- end}}
-    namespace-regex= "^(([A-Za-z0-9])+\\.(view\\-)+([A-Za-z\\-])+)"
-    namespace-exclude-regex = {{default "" .Values.Monstache.namespaceExcludeRegex | quote}}
+    namespace-regex= "^({{ template "mongo-db" . }}\\.(view\\-)+([A-Za-z\\-])+)"
+    namespace-exclude-regex = {{default "none" .Values.Monstache.namespaceExcludeRegex | quote}}
     gtm-channel-size = {{default 10 .Values.Monstache.gtmChannelSize}}
     {{- if .Values.Monstache.indexFiles}}
     index-files ={{default true .Values.Monstache.indexFiles }}
@@ -88,6 +88,7 @@ spec:
       component: {{ template "monstache-fullname" . }}
   strategy:
     type: RollingUpdate
+  minReadySeconds: 15
   template:
     metadata:
       labels:
@@ -106,6 +107,18 @@ spec:
         volumeMounts:
           - name: monstache-config
             mountPath: /config
+        livenessProbe:
+          httpGet:
+            path: /healtz
+            port: 3422
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 3422
+          initialDelaySeconds: 5
+          periodSeconds: 5
       volumes:
         - name: monstache-config
           configMap:
