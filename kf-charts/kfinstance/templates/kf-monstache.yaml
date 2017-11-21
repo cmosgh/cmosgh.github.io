@@ -52,7 +52,7 @@ data:
     {{- if .Values.Monstache.clusterName}}
     cluster-name = {{ .Values.Monstache.clusterName}}
     {{- end }}
-    direct-read-namespaces = ["{{ template "mongo-db" . }}.view-questions","{{ template "mongo-db" . }}.view-cloudinary-image"]
+    direct-read-namespaces = ["{{ template "mongo-db" . }}.view-questions","{{ template "mongo-db" . }}.view-cloudinary-image-bits","{{ template "mongo-db" . }}.view-simple-text-bits","{{ template "mongo-db" . }}.view-knowledge-sheets"]
     exit-after-direct-reads = false
 
     [[mapping]]
@@ -61,9 +61,20 @@ data:
     type = "view-questions"
 
     [[mapping]]
-    namespace = "{{ template "mongo-db" . }}.view-cloudinary-image"
+    namespace = "{{ template "mongo-db" . }}.view-cloudinary-image-bits"
     index = "{{ template "mongo-db" . }}"
-    type = "view-cloudinary-image"
+    type = "view-cloudinary-image-bits"
+
+    [[mapping]]
+    namespace = "{{ template "mongo-db" . }}.view-simple-text-bits"
+    index = "{{ template "mongo-db" . }}"
+    type = "view-simple-text-bits"
+
+    [[mapping]]
+    namespace = "{{ template "mongo-db" . }}.view-knowledge-sheets"
+    index = "{{ template "mongo-db" . }}"
+    type = "view-knowledge-sheets"
+
 
 ---
 apiVersion: extensions/v1beta1
