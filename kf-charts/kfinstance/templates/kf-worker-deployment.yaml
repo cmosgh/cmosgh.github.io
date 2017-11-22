@@ -42,6 +42,21 @@ spec:
           value: "elasticsearch:9200"
         - name: ES_VERSION
           value: "5.6"
+        - name: CLOUDINARY_CLOUD_NAME
+          valueFrom:
+            secretKeyRef:
+              name: kfcloudinary
+              key: cloudname
+        - name: CLOUDINARY_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: kfcloudinary
+              key: api_key
+        - name: CLOUDINARY_API_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: kfcloudinary
+              key: api_secret
         - name: MONGO_DB
           value: {{ template "mongo-db" . }}
         - name: SUBDOMAIN
