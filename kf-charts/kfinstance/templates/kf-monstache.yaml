@@ -130,6 +130,8 @@ spec:
             port: 3422
           initialDelaySeconds: 5
           periodSeconds: 5
+        resources:
+{{ toYaml .Values.Monstache.Resources | indent 12 }}
       volumes:
         - name: monstache-config
           configMap:
