@@ -127,13 +127,13 @@ spec:
             mountPath: /config
         livenessProbe:
           httpGet:
-            path: /healtz
+            path: /healthz
             port: 3422
           initialDelaySeconds: 5
           periodSeconds: 5
         readinessProbe:
           httpGet:
-            path: /ready
+            path: /healthz
             port: 3422
           initialDelaySeconds: 5
           periodSeconds: 5
