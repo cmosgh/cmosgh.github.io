@@ -47,7 +47,7 @@ Worker:
 # Dedicated mongo instance
 Mongo:
   Name: kfmongo
-  Image: mongo:latest
+  Image: mongo:3.4
   Resources:
     limits:
       cpu: 250m
