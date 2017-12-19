@@ -4,6 +4,8 @@ metadata:
   name: {{ template "monstache-config" . }}
 data:
   config.toml: |
+    http-server-addr = ":3422"
+    enable-http-server = true
     gzip = true
     stats = true
     index-stats = true
@@ -69,6 +71,11 @@ data:
     namespace = "{{ template "mongo-db" . }}.view-simple-text-bits"
     index = "{{ template "mongo-db" . }}"
     type = "view-simple-text-bits"
+
+    [[mapping]]
+    namespace = "{{ template "mongo-db" . }}.view-knowledge-sheets"
+    index = "{{ template "mongo-db" . }}"
+    type = "view-knowledge-sheets"
 
     [[mapping]]
     namespace = "{{ template "mongo-db" . }}.view-knowledge-sheets"

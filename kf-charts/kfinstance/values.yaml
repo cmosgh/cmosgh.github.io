@@ -65,12 +65,12 @@ Mongo:
 # dedicated ES sync instance with Monstache
 Monstache:
   Name: kfmonstache
-  Image: cmos/monstache
+  Image: cmos/monstache:3.4.1
   Resources:
     limits:
       cpu: 100m
-      memory: 100Mi
+      memory: 150Mi
     requests:
       cpu: 100m
-      memory: 100Mi
+      memory: 150Mi
 
