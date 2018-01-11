@@ -39,7 +39,7 @@ spec:
         - name: NODE_ENV
           value: "production"
         - name: USERNAME_IS_EMAIL
-          value: {{default 1 .Values.UsernameIsEmail}}
+          value: {{default "1" .Values.UsernameIsEmail}}
         - name: ES_URI
           value: "elasticsearch:9200"
         - name: ES_VERSION
