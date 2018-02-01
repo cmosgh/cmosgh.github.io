@@ -59,27 +59,27 @@ data:
 
     [[mapping]]
     namespace = "{{ template "mongo-db" . }}.view-questions"
-    index = "{{ template "mongo-db" . }}"
+    index = "{{ template "mongo-db" . }}-view-questions"
     type = "view-questions"
 
     [[mapping]]
     namespace = "{{ template "mongo-db" . }}.view-cloudinary-image-bits"
-    index = "{{ template "mongo-db" . }}"
+    index = "{{ template "mongo-db" . }}-view-cloudinary-image-bits"
     type = "view-cloudinary-image-bits"
 
     [[mapping]]
     namespace = "{{ template "mongo-db" . }}.view-simple-text-bits"
-    index = "{{ template "mongo-db" . }}"
+    index = "{{ template "mongo-db" . }}-view-simple-text-bits"
     type = "view-simple-text-bits"
 
     [[mapping]]
     namespace = "{{ template "mongo-db" . }}.view-knowledge-sheets"
-    index = "{{ template "mongo-db" . }}"
+    index = "{{ template "mongo-db" . }}-view-knowledge-sheets"
     type = "view-knowledge-sheets"
 
     [[mapping]]
     namespace = "{{ template "mongo-db" . }}.view-tags"
-    index = "{{ template "mongo-db" . }}"
+    index = "{{ template "mongo-db" . }}-view-tags"
     type = "view-tags"
 
 

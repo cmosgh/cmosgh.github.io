@@ -38,12 +38,12 @@ spec:
         env:
         - name: NODE_ENV
           value: "production"
-        - name: USERNAME_IS_EMAIL
-          value: {{default "1" .Values.UsernameIsEmail}}
         - name: ES_URI
           value: "elasticsearch:9200"
         - name: ES_VERSION
-          value: "5.6"
+          value: "6.1.2"
+        - name: ES_FORCE_BUILD_IDF
+          value: "enabled"
         - name: CLOUDINARY_CLOUD_NAME
           valueFrom:
             secretKeyRef:
@@ -111,6 +111,8 @@ spec:
         {{ else }}
           value: {{ randAlphaNum 10 | b64enc | quote }}
         {{ end }}
+        - name: USERNAME_IS_EMAIL
+          value: {{default "1" .Values.UsernameIsEmail}}
         resources:
 {{ toYaml .Values.Server.Resources | indent 12 }}
         livenessProbe:
