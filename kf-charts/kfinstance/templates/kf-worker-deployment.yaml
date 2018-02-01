@@ -43,7 +43,7 @@ spec:
         - name: ES_URI
           value: "elasticsearch:9200"
         - name: ES_VERSION
-          value: "6.1.2"
+          value: "5.6"
         - name: ES_FORCE_BUILD_IDF
           value: "enabled"
         - name: CLOUDINARY_CLOUD_NAME
