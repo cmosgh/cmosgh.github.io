@@ -11,7 +11,7 @@ metadata:
     id: {{ .Values.Id }}
     branch: {{ .Values.Branch }}
 spec:
-  replicas: {{default 1 .Values.Worker.Replicas}}
+  replicas: {{ default 1 .Values.Worker.Replicas}}
   revisionHistoryLimit: 2
   selector:
     matchLabels:
@@ -71,7 +71,7 @@ spec:
         {{- if .Values.DEBUG}}
           value: {{ .Values.DEBUG}}
         {{- else}}
-          value: "none"
+          value: none
         {{- end}}
         - name: MONGO_URI
           value: {{ template "mongo-uri" . }}
@@ -110,7 +110,7 @@ spec:
           value: {{ randAlphaNum 10 | b64enc | quote }}
         {{ end }}
         - name: USERNAME_IS_EMAIL
-          value: {{default "1" .Values.UsernameIsEmail}}
+          value: "0"
         resources:
 {{ toYaml .Values.Worker.Resources | indent 12 }}
         livenessProbe:

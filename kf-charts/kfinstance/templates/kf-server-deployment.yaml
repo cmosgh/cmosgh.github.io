@@ -11,7 +11,7 @@ metadata:
     id: {{ .Values.Id }}
     branch: {{ .Values.Branch }}
 spec:
-  replicas: {{default 1 .Values.Server.Replicas}}
+  replicas: {{ default 1 .Values.Server.Replicas }}
   revisionHistoryLimit: 2
   selector:
     matchLabels:
@@ -61,26 +61,6 @@ spec:
               key: api_secret
         - name: MONGO_DB
           value: {{ template "mongo-db" . }}
-        - name: SUBDOMAIN
-        {{- if .Values.SUBDOMAIN}}
-          value: {{ .Values.SUBDOMAIN}}
-        {{- else}}
-          value: "kf-{{ .Values.Id}}"
-        {{- end}}
-        - name: DEBUG
-        {{- if .Values.DEBUG}}
-          value: {{ .Values.DEBUG}}
-        {{- else}}
-          value: "none"
-        {{- end}}
-        - name: MONGO_URI
-          value: {{ template "mongo-uri" . }}
-        - name: REDIS_PORT
-          value: "6379"
-        - name: REDIS_IP
-          value: "redis-service"
-        - name: SECRET
-          value: {{ randAlphaNum 28 | b64enc | quote }}
         - name: PASSWORD_MIN_AMOUNT_CHARS
           value: "8"
         - name: PASSWORD_MIN_AMOUNT_LETTERS
@@ -93,26 +73,46 @@ spec:
           value: "USER"
         - name: LANGUAGE_FIELDNAME
           value: "language"
+        - name: MONGO_URI
+          value: {{ template "mongo-uri" . }}
+        - name: REDIS_PORT
+          value: "6379"
+        - name: REDIS_IP
+          value: "redis-service"
+        - name: SECRET
+          value: {{ randAlphaNum 28 | b64enc | quote }}
+        - name: SUBDOMAIN
+        {{- if .Values.SUBDOMAIN}}
+          value: {{ .Values.SUBDOMAIN}}
+        {{- else}}
+          value: "kf-{{ .Values.Id}}"
+        {{- end}}
+        - name: DEBUG
+        {{- if .Values.DEBUG}}
+          value: {{ .Values.DEBUG}}
+        {{- else}}
+          value: "none"
+        {{- end}}
         - name: LANGUAGES
-        {{ if .Values.Languages }}
+        {{- if .Values.Languages }}
           value: {{ .Values.Languages }}
-        {{ else }}
+        {{- else }}
           value: "en,nl,ro"
         {{ end }}
         - name: ACCOUNT_OWNER_EMAIL
-        {{ if .Values.AccountOwnerEmail }}
+        {{- if .Values.AccountOwnerEmail }}
           value: {{ .Values.AccountOwnerEmail }}
-        {{ else }}
+        {{- else }}
           value: "admin-{{ .Values.Id }}@knowledgeflow.io"
-        {{ end }}
+        {{- end }}
         - name: ACCOUNT_OWNER_PASSWORD
-        {{ if .Values.AccountOwnerPassword }}
+        {{- if .Values.AccountOwnerPassword }}
           value: {{ .Values.AccountOwnerPassword }}
-        {{ else }}
+        {{- else }}
           value: {{ randAlphaNum 10 | b64enc | quote }}
-        {{ end }}
+        {{- end }}
         - name: USERNAME_IS_EMAIL
-          value: {{default "1" .Values.UsernameIsEmail}}
+          value: "0"
         resources:
 {{ toYaml .Values.Server.Resources | indent 12 }}
         livenessProbe:
