@@ -64,6 +64,7 @@ Mongo:
 
 # dedicated ES sync instance with Monstache
 Monstache:
+  Enabled: false
   Name: kfmonstache
   Image: cmos/monstache:3.4.1
   Resources:
