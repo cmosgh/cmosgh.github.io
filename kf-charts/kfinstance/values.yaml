@@ -18,10 +18,10 @@ Server:
   ImagePullPolicy: Always
   Resources:
     limits:
-        cpu: 300m
+        cpu: 150m
         memory: 300Mi
     requests:
-      cpu: 300m
+      cpu: 150m
       memory: 300Mi
   Service:
     externalPort: 3000
@@ -38,10 +38,10 @@ Worker:
   ImagePullPolicy: Always
   Resources:
     limits:
-      cpu: 300m
+      cpu: 150m
       memory: 300Mi
     requests:
-      cpu: 300m
+      cpu: 150m
       memory: 300Mi
 
 # Dedicated mongo instance
@@ -50,10 +50,10 @@ Mongo:
   Image: mongo:3.4
   Resources:
     limits:
-      cpu: 250m
+      cpu: 150m
       memory: 300Mi
     requests:
-      cpu: 250m
+      cpu: 150m
       memory: 300Mi
   Volumes:
     Capacity: 2Gi
