@@ -84,6 +84,8 @@ spec:
           - {{ template "mongo-replica-set" . }}
           - "--smallfiles"
           - "--noprealloc"
+          - "--wiredTigerCacheSizeGB"
+          - "0.15"
         ports:
         - name:  {{ template "mongo-controller-port" .}}
           containerPort: {{ .Values.Mongo.ServicePort }}
