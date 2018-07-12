@@ -74,7 +74,7 @@ spec:
         name: {{ template "mongo-controller-port" .}}
         replSet: {{ template "mongo-replica-set" . }}
     spec:
-      serviceAccountName: {{ if .Values.rbac.install }}{{ template "mongo-fullname" . }}{{ else }}"{{ .Values.rbac.serviceAccountName }}"{{ end }}
+      serviceAccountName: {{ if .Values.rbac.install }}{{ template "mongo-fullname" . }}{{ else }}{{ .Values.rbac.serviceAccountName }}{{ end }}
       containers:
       - image: "{{ .Values.Mongo.Image }}"
         name: {{ template "mongo-fullname" . }}
