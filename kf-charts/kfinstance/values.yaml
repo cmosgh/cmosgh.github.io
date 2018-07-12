@@ -44,6 +44,26 @@ Worker:
       cpu: 150m
       memory: 300Mi
 
+# Notification
+Notification:
+  Name: kfn
+  Image: cmos/kfn
+  ImageTag: latest
+  Component: notification
+  Replicas: 1
+  ImagePullPolicy: Always
+  Resources:
+    limits:
+      cpu: 150m
+      memory: 300Mi
+    requests:
+      cpu: 150m
+      memory: 300Mi
+  Service:
+    externalPort: 3000
+    internalPort: 3000
+    portType: ClusterIP #can be NodePort, ExternalName, LoadBalancer, ClusterIP
+
 # Dedicated mongo instance
 Mongo:
   Name: kfmongo
