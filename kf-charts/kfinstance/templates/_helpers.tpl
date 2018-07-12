@@ -12,6 +12,10 @@ We truncate at 63 chars because some Kubernetes name fields are limited to this 
 */}}
 
 
+{{- define "notification-fullname" -}}
+{{- printf "%s-%s-%s" .Values.Notification.Name .Release.Name .Values.Id | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
+
 {{- define "server-fullname" -}}
 {{- printf "%s-%s-%s" .Values.Server.Name .Release.Name .Values.Id | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
