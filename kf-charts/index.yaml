@@ -2,7 +2,18 @@ apiVersion: v1
 entries:
   kfinstance:
   - apiVersion: v1
-    created: 2018-04-03T15:34:17.374136+03:00
+    created: 2018-07-12T16:48:58.214577+03:00
+    description: Helm chart for deploying a KF instance
+    digest: d59c4f53000e8c48fb39274e5e61f0b1cb5058067fa3198a9110a53515ff76c0
+    keywords:
+    - knowledgeflow
+    - instance
+    name: kfinstance
+    urls:
+    - kfinstance-0.2.15.tgz
+    version: 0.2.15
+  - apiVersion: v1
+    created: 2018-07-12T16:48:58.214109+03:00
     description: Helm chart for deploying a KF instance
     digest: 8a16ee6045375d5f67e53e5c363a0de274da8bfaba880e270c6735c5c8dde53f
     keywords:
@@ -13,7 +24,7 @@ entries:
     - kfinstance-0.2.14.tgz
     version: 0.2.14
   - apiVersion: v1
-    created: 2018-04-03T15:34:17.373131+03:00
+    created: 2018-07-12T16:48:58.213252+03:00
     description: Helm chart for deploying a KF instance
     digest: 71894da77aaf560fd0641093dfc0de6e87243c72cb6743057729fa09c900db9c
     keywords:
@@ -24,7 +35,7 @@ entries:
     - kfinstance-0.2.13.tgz
     version: 0.2.13
   - apiVersion: v1
-    created: 2018-04-03T15:34:17.371824+03:00
+    created: 2018-07-12T16:48:58.212382+03:00
     description: Helm chart for deploying a KF instance
     digest: fb3df512849f438046fa4853083d9db43a34831bba54a6a635c0cb17b85b284c
     keywords:
@@ -35,7 +46,7 @@ entries:
     - kfinstance-0.2.12.tgz
     version: 0.2.12
   - apiVersion: v1
-    created: 2018-04-03T15:34:17.370855+03:00
+    created: 2018-07-12T16:48:58.211489+03:00
     description: Helm chart for deploying a KF instance
     digest: 95cdaea520cffa8ae03fdd8df8d20166a947d218385a275fa9886bd8bcc6e7e3
     keywords:
@@ -46,7 +57,7 @@ entries:
     - kfinstance-0.2.11.tgz
     version: 0.2.11
   - apiVersion: v1
-    created: 2018-04-03T15:34:17.36971+03:00
+    created: 2018-07-12T16:48:58.210565+03:00
     description: Helm chart for deploying a KF instance
     digest: 2105bc62e5c8664fed384871d7742d334e54877e68ab09215ec99f4a208d3bc5
     keywords:
@@ -57,7 +68,7 @@ entries:
     - kfinstance-0.2.10.tgz
     version: 0.2.10
   - apiVersion: v1
-    created: 2018-04-03T15:34:17.385181+03:00
+    created: 2018-07-12T16:48:58.221278+03:00
     description: Helm chart for deploying a KF instance
     digest: 554b966eb2c898eef009278a757ffe6008a44f87bb1097b6e2533535e7606054
     keywords:
@@ -68,7 +79,7 @@ entries:
     - kfinstance-0.2.9.tgz
     version: 0.2.9
   - apiVersion: v1
-    created: 2018-04-03T15:34:17.384215+03:00
+    created: 2018-07-12T16:48:58.220551+03:00
     description: Helm chart for deploying a KF instance
     digest: a56260d3f4fe465875bc5d17f59f848ac2e4aa8cbf263f80441e5dab4085131f
     keywords:
@@ -79,7 +90,7 @@ entries:
     - kfinstance-0.2.8.tgz
     version: 0.2.8
   - apiVersion: v1
-    created: 2018-04-03T15:34:17.382023+03:00
+    created: 2018-07-12T16:48:58.2191+03:00
     description: Helm chart for deploying a KF instance
     digest: e60af712cf896559a7ee4261752f87676a0fc39e6b1eca4f16879f44a2753bad
     keywords:
@@ -90,7 +101,7 @@ entries:
     - kfinstance-0.2.7.tgz
     version: 0.2.7
   - apiVersion: v1
-    created: 2018-04-03T15:34:17.380607+03:00
+    created: 2018-07-12T16:48:58.218351+03:00
     description: Helm chart for deploying a KF instance
     digest: b17e4bf78e06a54bbae83891509314677899f5f670bacf3076f2ef1175226366
     keywords:
@@ -101,7 +112,7 @@ entries:
     - kfinstance-0.2.6.tgz
     version: 0.2.6
   - apiVersion: v1
-    created: 2018-04-03T15:34:17.379644+03:00
+    created: 2018-07-12T16:48:58.217595+03:00
     description: Helm chart for deploying a KF instance
     digest: df48abeb19a57a34e3f968d38d3f991a9c09ff37d811f0ccc7c0822b67962780
     keywords:
@@ -112,7 +123,7 @@ entries:
     - kfinstance-0.2.5.tgz
     version: 0.2.5
   - apiVersion: v1
-    created: 2018-04-03T15:34:17.378731+03:00
+    created: 2018-07-12T16:48:58.216919+03:00
     description: Helm chart for deploying a KF instance
     digest: e2411653634470c3e785bff6f45c2da4d19257df0f1780eb5ba1d57f736fe9d0
     keywords:
@@ -123,7 +134,7 @@ entries:
     - kfinstance-0.2.4.tgz
     version: 0.2.4
   - apiVersion: v1
-    created: 2018-04-03T15:34:17.37741+03:00
+    created: 2018-07-12T16:48:58.216197+03:00
     description: Helm chart for deploying a KF instance
     digest: 81e9521772f369991dbcf257ca8653e65eb2364ca0001ebd0bc45c66fe25bb00
     keywords:
@@ -134,7 +145,7 @@ entries:
     - kfinstance-0.2.3.tgz
     version: 0.2.3
   - apiVersion: v1
-    created: 2018-04-03T15:34:17.375793+03:00
+    created: 2018-07-12T16:48:58.215354+03:00
     description: Helm chart for deploying a KF instance
     digest: 0080e55f97c7c84dbc2aed84f61c285503ed872a78322138be1b2a7a7495f0be
     keywords:
@@ -145,7 +156,7 @@ entries:
     - kfinstance-0.2.2.tgz
     version: 0.2.2
   - apiVersion: v1
-    created: 2018-04-03T15:34:17.367939+03:00
+    created: 2018-07-12T16:48:58.209636+03:00
     description: Helm chart for deploying a KF instance
     digest: 91791a4d5d6b6c814cde8d544d64ecd9fff1be4868029cb5b1023f02364bc027
     keywords:
@@ -156,7 +167,7 @@ entries:
     - kfinstance-0.2.1.tgz
     version: 0.2.1
   - apiVersion: v1
-    created: 2018-04-03T15:34:17.364692+03:00
+    created: 2018-07-12T16:48:58.208541+03:00
     description: Helm chart for deploying a KF instance
     digest: 9f24eaf7f025cb85e0508ba0672880ea0771f2df3a30bf1121f2228cbb8cd12c
     keywords:
@@ -166,4 +177,4 @@ entries:
     urls:
     - kfinstance-0.2.0.tgz
     version: 0.2.0
-generated: 2018-04-03T15:34:17.36194+03:00
+generated: 2018-07-12T16:48:58.206001+03:00
