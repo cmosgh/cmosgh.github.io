@@ -55,7 +55,7 @@ data:
     {{- if .Values.Monstache.clusterName}}
     cluster-name = {{ .Values.Monstache.clusterName}}
     {{- end }}
-    direct-read-namespaces = ["{{ template "mongo-db" . }}.view-questions","{{ template "mongo-db" . }}.view-cloudinary-image-bits","{{ template "mongo-db" . }}.view-simple-text-bits","{{ template "mongo-db" . }}.view-knowledge-sheets","{{ template "mongo-db" . }}.view-tags"]
+    direct-read-namespaces = ["{{ template "mongo-db" . }}.view-questions","{{ template "mongo-db" . }}.view-cloudinary-image-bits","{{ template "mongo-db" . }}.view-simple-text-bits","{{ template "mongo-db" . }}.view-knowledge-sheets","{{ template "mongo-db" . }}.view-tags","{{ template "mongo-db" . }}.view-external-video-bits","{{ template "mongo-db" . }}.view-link-bits"]
     exit-after-direct-reads = false
 
     [[mapping]]
@@ -82,6 +82,16 @@ data:
     namespace = "{{ template "mongo-db" . }}.view-tags"
     index = "{{ template "mongo-db" . }}-view-tags"
     type = "view-tags"
+
+    [[mapping]]
+    namespace = "{{ template "mongo-db" . }}.view-external-video-bits"
+    index= "{{ template "mongo-db" . }}-view-external-video-bits"
+    type = "view-external-video-bits"
+
+    [[mapping]]
+    namespace = "{{ template "mongo-db" . }}.view-link-bits"
+    index = "{{ template "mongo-db" . }}-view-link-bits"
+    type= "view-link-bits"
 
 
 ---
@@ -120,7 +130,7 @@ spec:
         imagePullPolicy: Always
         name: {{ template "monstache-fullname" . }}
         command:
-          - "/monstache"
+          - "monstache"
           - "-f"
           - "/config/config.toml"
         volumeMounts:
