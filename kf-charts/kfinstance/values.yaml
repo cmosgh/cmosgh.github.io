@@ -46,6 +46,7 @@ Worker:
 
 # Notification
 Notification:
+  Enabled: false
   Name: kfn
   Image: cmos/kfn
   ImageTag: latest
