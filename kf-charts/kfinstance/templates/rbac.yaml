@@ -1,4 +1,4 @@
-{{ if .Values.rbac.install }}
+{{ if eq .Values.rbac.install true }}
 {{- $serviceName := include "mongo-fullname" . -}}
 apiVersion: rbac.authorization.k8s.io/{{ required "A valid .Values.rbac.apiVersion entry required!" .Values.rbac.apiVersion }}
 kind: ClusterRoleBinding
