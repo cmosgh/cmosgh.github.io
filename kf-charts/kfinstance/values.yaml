@@ -86,7 +86,7 @@ Mongo:
 Monstache:
   Enabled: false
   Name: kfmonstache
-  Image: cmos/monstache:3.4.1
+  Image: rwynn/monstache:4.8.0
   Resources:
     limits:
       cpu: 100m
