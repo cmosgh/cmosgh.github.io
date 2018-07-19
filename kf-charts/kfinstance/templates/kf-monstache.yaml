@@ -17,7 +17,7 @@ data:
     {{- if .Values.Monstache.mongoValidatePemFile }}
     mongo-validate-pem-file = {{default false .Values.Monstache.mongoValidatePemFile }}
     {{- end}}
-    elasticsearch-urls = ["http://elasticsearch:9200"]
+    elasticsearch-urls = ["http://elasticsearch-ingest:9200"]
     {{- if .Values.Monstache.esUser}}
     elasticsearch-user = {{ .Values.Monstache.esUser | quote }}
     {{- end}}
