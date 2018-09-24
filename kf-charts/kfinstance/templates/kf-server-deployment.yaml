@@ -113,6 +113,12 @@ spec:
         {{- end }}
         - name: USERNAME_IS_EMAIL
           value: "0"
+        - name: REALTIME_SERVER_ENABLED
+        {{- if eq .Values.Notification.Enabled true }}
+          value: true
+        {{- else }}}
+          value: false
+        {{- end }}
         resources:
 {{ toYaml .Values.Server.Resources | indent 12 }}
         livenessProbe:
