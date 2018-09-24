@@ -113,9 +113,9 @@ spec:
           value: "0"
         - name: REALTIME_SERVER_ENABLED
         {{- if eq .Values.Notification.Enabled true }}
-          value: true
+          value: "true"
         {{- else }}}
-          value: false
+          value: "false"
         {{- end }}
         resources:
 {{ toYaml .Values.Worker.Resources | indent 12 }}
