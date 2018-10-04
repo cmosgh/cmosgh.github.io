@@ -44,6 +44,46 @@ spec:
           value: "5.5"
         - name: ES_FORCE_BUILD_IDF
           value: "enabled"
+        - name: AS3_ACCESS_KEY
+          valueFrom:
+            configMapKeyRef:
+              key: AS3_ACCESS_KEY
+              name: kf-s3-bucket-config
+        - name: AS3_SIGNATURE_VERSION
+          valueFrom:
+            configMapKeyRef:
+              key: AS3_SIGNATURE_VERSION
+              name: kf-s3-bucket-config
+        - name: AS3_REGION
+          valueFrom:
+            configMapKeyRef:
+              key: AS3_REGION
+              name: kf-s3-bucket-config
+        - name: AS3_BUCKET
+          valueFrom:
+            configMapKeyRef:
+              key: AS3_BUCKET
+              name: kf-s3-bucket-config
+        - name: AS3_MAX_FILE_SIZE
+          valueFrom:
+            configMapKeyRef:
+              key: AS3_MAX_FILE_SIZE
+              name: kf-s3-bucket-config
+        - name: AS3_MAX_FILE_SIZE_LIMIT
+          valueFrom:
+            configMapKeyRef:
+              key: AS3_MAX_FILE_SIZE_LIMIT
+              name: kf-s3-bucket-config
+        - name: AS3_MAX_TOTAL_FILE_SIZE
+          valueFrom:
+            configMapKeyRef:
+              key: AS3_MAX_TOTAL_FILE_SIZE
+              name: kf-s3-bucket-config
+        - name: AS3_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              key: AS3_SECRET_ACCESS_KEY
+              name: kf-s3-bucket-secret
         - name: CLOUDINARY_CLOUD_NAME
           valueFrom:
             secretKeyRef:
