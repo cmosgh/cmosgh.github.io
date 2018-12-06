@@ -55,6 +55,8 @@ spec:
         {{- else}}
           value: "none"
         {{- end}}
+        - name: PORT
+          value: {{ .Values.Notification.Service.internalPort }}
         resources:
 {{ toYaml .Values.Notification.Resources | indent 12 }}
         livenessProbe:
