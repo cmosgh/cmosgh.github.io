@@ -38,12 +38,17 @@ spec:
         env:
         - name: NODE_ENV
           value: "production"
+        {{- if .Values.ElasticSearch.Enabled }}
         - name: ES_URI
-          value: "elasticsearch:9200"
+          value: {{ .Values.ElasticSearch.ES_URI }}
         - name: ES_VERSION
-          value: "5.5"
+          value: {{ .Values.ElasticSearch.ES_VERSION }}
         - name: ES_FORCE_BUILD_IDF
-          value: "enabled"
+          value: {{ .Values.ElasticSearch.ES_FORCE_BUILD_IDF }}
+        {{- else}}
+        - name: ES_URI
+          value: "elasticNotEnabled:9200"
+        {{- end}}
         - name: AS3_ACCESS_KEY
           valueFrom:
             configMapKeyRef:
@@ -108,11 +113,7 @@ spec:
           value: "kf-{{ .Values.Id}}"
         {{- end}}
         - name: DEBUG
-        {{- if .Values.DEBUG}}
           value: {{ .Values.DEBUG}}
-        {{- else}}
-          value: none
-        {{- end}}
         - name: MONGO_URI
           value: {{ template "mongo-uri" . }}
         - name: REDIS_PORT
@@ -120,11 +121,11 @@ spec:
         - name: REDIS_IP
           value: "redis-service"
         - name: PASSWORD_MIN_AMOUNT_CHARS
-          value: "8"
+          value: {{ .Values.Password.MIN_AMOUNT_CHARS | quote }}
         - name: PASSWORD_MIN_AMOUNT_LETTERS
-          value: "1"
+          value: {{ .Values.Password.MIN_AMOUNT_LETTERS | quote }}
         - name: PASSWORD_MIN_AMOUNT_NUMBERS
-          value: "1"
+          value: {{ .Values.Password.MIN_AMOUNT_NUMBERS | quote }}
         - name: DEFAULT_OWNER_GROUP
           value: "OWNER"
         - name: DEFAULT_USER_GROUP
@@ -132,11 +133,7 @@ spec:
         - name: LANGUAGE_FIELDNAME
           value: "language"
         - name: LANGUAGES
-        {{ if .Values.Languages }}
           value: {{ .Values.Languages }}
-        {{ else }}
-          value: "en,nl,ro"
-        {{ end }}
         - name: ACCOUNT_OWNER_EMAIL
         {{ if .Values.AccountOwnerEmail }}
           value: {{ .Values.AccountOwnerEmail }}

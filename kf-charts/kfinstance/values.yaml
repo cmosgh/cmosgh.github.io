@@ -83,9 +83,17 @@ Mongo:
   ServicePort: 27017
 
 
+# ElasticSearch config
+
+ElasticSearch:
+  # if Enabled: true Monstache will be also started
+  Enabled: false
+  ES_URI: "elasticsearch-ingest:9200"
+  ES_VERSION: "6.x"
+  ES_FORCE_BUILD_IDF: "enabled"
+
 # dedicated ES sync instance with Monstache
 Monstache:
-  Enabled: false
   Name: kfmonstache
   Image: rwynn/monstache:4.8.0
   Resources:
@@ -103,3 +111,15 @@ rbac:
   # RBAC api version (currently either v1beta1 or v1alpha1)
   apiVersion: v1beta1
   roleRef: cluster-admin
+
+# languages
+Languages: "en,nl,fr,ro"
+
+# PASSWORD SETTINGS
+Password:
+  MIN_AMOUNT_CHARS: 8
+  MIN_AMOUNT_LETTERS: 1
+  MIN_AMOUNT_NUMBERS: 1
+
+# DEBUG
+DEBUG: none

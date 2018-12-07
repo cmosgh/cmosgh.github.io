@@ -1,4 +1,4 @@
-{{- if eq .Values.Monstache.Enabled true }}
+{{- if eq .Values.ElasticSearch.Enabled true }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
