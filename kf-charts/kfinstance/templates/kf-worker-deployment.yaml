@@ -121,11 +121,11 @@ spec:
         - name: REDIS_IP
           value: "redis-service"
         - name: PASSWORD_MIN_AMOUNT_CHARS
-          value: {{ .Values.Password.MIN_AMOUNT_CHARS | quote }}
+          value: {{ .Values.Password.minAmountChars | quote}}
         - name: PASSWORD_MIN_AMOUNT_LETTERS
-          value: {{ .Values.Password.MIN_AMOUNT_LETTERS | quote }}
+          value: {{ .Values.Password.minAmountLetters | quote}}
         - name: PASSWORD_MIN_AMOUNT_NUMBERS
-          value: {{ .Values.Password.MIN_AMOUNT_NUMBERS | quote }}
+          value: {{ .Values.Password.minAmountNumbers | quote }}
         - name: DEFAULT_OWNER_GROUP
           value: "OWNER"
         - name: DEFAULT_USER_GROUP
