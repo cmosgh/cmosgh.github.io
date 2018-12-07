@@ -114,7 +114,7 @@ spec:
         - name: REDIS_IP
           value: "redis-service"
         - name: SECRET
-          value: {{ randAlphaNum 28 | b64enc | quote }}
+          value: {{ .Values.Id quote }}
         - name: SUBDOMAIN
         {{- if .Values.SUBDOMAIN}}
           value: {{ .Values.SUBDOMAIN}}
