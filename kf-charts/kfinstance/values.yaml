@@ -117,9 +117,9 @@ Languages: "en,nl,fr,ro"
 
 # PASSWORD SETTINGS
 Password:
-  minAmountChars: 8
-  minAmountLetters: 1
-  minAmountNumbers: 1
+  minAmountChars: "8"
+  minAmountLetters: "1"
+  minAmountNumbers: "1"
 
 # DEBUG
 DEBUG: none

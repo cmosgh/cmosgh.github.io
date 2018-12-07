@@ -96,11 +96,11 @@ spec:
         - name: MONGO_DB
           value: {{ template "mongo-db" . }}
         - name: PASSWORD_MIN_AMOUNT_CHARS
-          value: {{.Values.Password.minAmountChars | quote }}
+          value: {{ .Values.Password.minAmountChars | quote }}
         - name: PASSWORD_MIN_AMOUNT_LETTERS
           value: {{ .Values.Password.minAmountLetters | quote }}
         - name: PASSWORD_MIN_AMOUNT_NUMBERS
-          value: {{.Values.Password.minAmountNumbers | quote }}
+          value: {{ .Values.Password.minAmountNumbers | quote }}
         - name: DEFAULT_OWNER_GROUP
           value: "OWNER"
         - name: DEFAULT_USER_GROUP
