@@ -44,7 +44,7 @@ spec:
         - name: REDIS_IP
           value: "redis-service"
         - name: PORT
-          value: "{{ .Values.Notification.Service.internalPort }}"
+          value: {{ .Values.Notification.Service.internalPort | quote }}
         - name: SUBDOMAIN
         {{- if .Values.SUBDOMAIN}}
           value: {{ .Values.SUBDOMAIN}}
