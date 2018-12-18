@@ -86,6 +86,7 @@ spec:
           - "--noprealloc"
           - "--wiredTigerCacheSizeGB"
           - "0.15"
+          - "--bind_ip_all"
         ports:
         - name:  {{ template "mongo-controller-port" .}}
           containerPort: {{ .Values.Mongo.ServicePort }}

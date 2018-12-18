@@ -68,7 +68,7 @@ Notification:
 # Dedicated mongo instance
 Mongo:
   Name: kfmongo
-  Image: mongo:3.4
+  Image: mongo:4.0
   Resources:
     limits:
       cpu: 150m
