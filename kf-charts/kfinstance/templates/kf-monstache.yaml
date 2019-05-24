@@ -1,4 +1,3 @@
-{{- if eq .Values.ElasticSearch.Enabled true }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -93,7 +92,7 @@ data:
     index = "{{ template "mongo-db" . }}-view-link-bits"
     type= "view-link-bits"
 
-
+{{- if eq .Values.ElasticSearch.Enabled true }}
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
