@@ -104,6 +104,22 @@ spec:
             secretKeyRef:
               name: kfcloudinary
               key: api_secret
+        - name: TRUE_FALSE
+          value: 0
+        - name: MULTIPLE_CHOICE
+          value: 1
+        - name: SELF_EVALUATION
+          value: 0
+        - name: ORDER_BITS
+          value: 0
+        - name: ORDER_SECTION_BITS
+          value: 0
+        - name: MATCH_IMAGE_WITH_SHEET_TITLES
+          value: 0
+        - name: MATCH_BITS_TO_SHEET
+          value: 0
+        - name: MATCH_SHEET_TITLE_WITH_IMAGES
+          value: 0
         - name: MONGO_DB
           value: {{ template "mongo-db" . }}
         - name: SUBDOMAIN
