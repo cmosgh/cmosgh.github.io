@@ -112,7 +112,7 @@ spec:
         - name: REDIS_PORT
           value: "6379"
         - name: REDIS_IP
-          value: "redis-service"
+          value: "kfredis-redis-ha-master-svc"
         - name: SECRET
           value: {{ .Values.Id | quote }}
         - name: SUBDOMAIN
